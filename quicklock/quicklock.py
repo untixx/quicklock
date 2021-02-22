@@ -1,11 +1,12 @@
+import json
+import logging
 import os
 import re
-import json
+
 import psutil
-import logging
-import traceback
 
 log = logging.getLogger('quicklock')
+
 
 def singleton(resource, dirname='.lock'):
     """
@@ -39,15 +40,18 @@ def singleton(resource, dirname='.lock'):
                     locked = True
 
         # Something is wrong with the lockfile, just ignore it and create the lock below
-        except Exception, exc:
+        except Exception as exc:
             pass
 
         # Resource was locked
         if locked:
-            raise RuntimeError('Resource <{}> is currently locked by <Process {}: "{}">'.format(resource, other_process.pid, other_process.name()))
+            raise RuntimeError('Resource <{}> is currently locked by <Process {}: "{}">'.format(
+                resource, other_process.pid, other_process.name())
+            )
 
     # Create the lock with the current process information
     process = psutil.Process(os.getpid())
     with open(lock_file, 'w') as lock_handle:
         json.dump({"name": process.name(), "pid": process.pid}, lock_handle)
-        log.info('Obtained exclusive lock on resource <{}> (this is <Process {}: "{}">)'.format(resource, process.pid, process.name()))
+        log.info('Obtained exclusive lock on resource <{}> (this is <Process {}: "{}">)'.format(
+            resource, process.pid, process.name()))

@@ -1,1 +1,1 @@
-from quicklock import singleton
+from .quicklock import singleton

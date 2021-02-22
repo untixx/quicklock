@@ -1,6 +1,8 @@
-from quicklock import singleton
 import time
 from unittest import TestCase
+
+from quicklock import singleton
+
 
 class SingletonTestCase(TestCase):
     def test(self):
@@ -12,7 +14,7 @@ class SingletonTestCase(TestCase):
             time.sleep(60)
             print('>> Test Note: Quitting and releasing lock')
 
-        except RuntimeError, exc:
+        except RuntimeError as exc:
             print('>> Test Note: Lock was already in use')
             self.assertTrue(isinstance(exc, RuntimeError))
-            self.assertTrue('Resource <resource> is currently locked by' in exc.message)
+            self.assertTrue('Resource <resource> is currently locked by' in exc.args[0])
