@@ -1,4 +1,4 @@
-quicklock
+quicklock3
 =========
 
 A simple Python resource lock to ensure only one process at a time is
@@ -17,7 +17,7 @@ Simple usage:
 
 .. code:: python
 
-    from quicklock import singleton
+    from quicklock3 import singleton
 
     singleton('my-process') # This will ensure that only one of these is running at once
                             # The lock is released when the process that created the lock
@@ -30,7 +30,7 @@ Specifying the lock directory:
 
 .. code:: python
 
-    from quicklock import singleton
+    from quicklock3 import singleton
 
     singleton('my-process', dirname='/var/lock') # Now all lock files will be written to
                                                  # /var/lock instead

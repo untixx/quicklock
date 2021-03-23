@@ -1,4 +1,4 @@
-# quicklock
+# quicklock3
 A simple Python resource lock to ensure only one process at a time is operating with a particular resource.
 
 ## Singleton Usage
@@ -8,11 +8,11 @@ Singleton creates a file containing process information to ensure that the proce
 #### Simple usage:
 
 ```python
-from quicklock import singleton
+from quicklock3 import singleton
 
-singleton('my-process') # This will ensure that only one of these is running at once
-                        # The lock is released when the process that created the lock
-                        # exits (successfully or quits unexpectedly)
+singleton('my-process')  # This will ensure that only one of these is running at once
+# The lock is released when the process that created the lock
+# exits (successfully or quits unexpectedly)
 
 # Intensive processing here
 ```
@@ -20,10 +20,10 @@ singleton('my-process') # This will ensure that only one of these is running at 
 #### Specifying the lock directory:
 
 ```python
-from quicklock import singleton
+from quicklock3 import singleton
 
-singleton('my-process', dirname='/var/lock') # Now all lock files will be written to
-                                             # /var/lock instead
+singleton('my-process', dirname='/var/lock')  # Now all lock files will be written to
+# /var/lock instead
 
 # Intensive processing here
 ```

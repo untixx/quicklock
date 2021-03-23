@@ -5,7 +5,7 @@ import re
 
 import psutil
 
-log = logging.getLogger('quicklock')
+log = logging.getLogger('quicklock3')
 
 
 def singleton(resource, dirname='.lock'):

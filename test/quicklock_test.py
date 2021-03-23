@@ -1,12 +1,11 @@
 import time
 from unittest import TestCase
 
-from quicklock import singleton
+from quicklock3 import singleton
 
 
 class SingletonTestCase(TestCase):
     def test(self):
-
         try:
             singleton('resource')
             print('>> Test Note: Lock has been acquired, waiting for 60 seconds')
